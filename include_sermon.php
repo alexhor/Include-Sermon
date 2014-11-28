@@ -22,11 +22,22 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+?><link rel='stylesheet' type='text/css' href='style.css'><?php
 
 /*turning debugging on for testing*/
 define('WP_DEBUG', true);
 
-/*including the textfiles to internationalize the plugin*/
+/*textfiles to internationalize the plugin*/
 load_plugin_textdomain( 'include-sermon-lang', false, basename( dirname( __FILE__ ) ) . '/lang' );
  
-require_once('edit_options.php');
+/*file for creating the post*/
+require_once( 'include_sermon_post.php' );
+ 
+/*file for adding the from to create a post*/
+require_once( 'include_sermon_form.php' );
+ 
+/*file for adding the options in the administration area*/
+require_once( 'include_sermon_options.php' );
+ 
+/*file for general functions*/
+require_once( 'general.php' );

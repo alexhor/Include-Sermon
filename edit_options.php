@@ -21,9 +21,9 @@
 	$button_color = get_option( 'include-sermon-button-color' );
 	
 	//checking if the user has really send the form
-	if( isset( $_POST['checkpost'] ) && $_POST['checkpost'] == 'rg' ) {
+	if( isset( $_POST['inc_serm_checkpost'] ) && $_POST['inc_serm_checkpost'] == 'rg' ) {
 		//getting the postet values and storing them into the database
-		$button_color = $_POST['button-color'];
+		$button_color = $_POST['inc_serm_button-color'];
 		update_option( 'include-sermon-button-color', $button_color );
 		//telling the user that his setting were successfully stored
 		echo "<div class='updated'><p><strong>".__( 'settings saved', 'include-sermon-lang' )."</strong></p></div>";
@@ -31,9 +31,9 @@
 	?>
 	<!--now the options start-->
 	<div class="wrap">
-		<form name='options' action='' method='post'>
+		<form name='inc_serm_options' action='' method='post'>
 			<!--setting the checking variable to verify that the user has send this form-->
-			<input type='hidden' name='checkpost' value='rg'>
+			<input type='hidden' name='inc_serm_checkpost' value='rg'>
 			<!--for better look the options are listed in a table-->
 			<table class='form-table'>
 				<!--table header starts-->
@@ -46,17 +46,17 @@
 				<tbody>
 					<tr>
 						<!--label for the button-color input field-->
-						<th><label for='button-color'><h4><?php _e( 'Choose a color for the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
+						<th><label for='inc_serm_button-color'><h4><?php _e( 'Choose a color for the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
 						<td>
 							<!--input field for setting the button-color-->
-							<input type='text' name='button-color' maxlength='6' placeholder="<?php _e( 'Button Color', 'include-sermon-lang' );?>" required='required' value="<?php echo $button_color;?>">
+							<input type='text' name='inc_serm_button-color' maxlength='6' placeholder="<?php _e( 'Button Color', 'include-sermon-lang' );?>" required='required' value="<?php echo $button_color;?>">
 							<!--instructing the user which strings he is allowed to use-->
 							<p style='font-size:9px'><?php _e( 'You can use hexcode or words like "blue" or "red"', 'include-sermon-lang' );?></p>
 						</td>
 					</tr>
 					<tr>
 						<!--submit button to send the form-->
-						<th><p class='submit'><input type='submit' name='submit' class='button-primary' value="<?php _e( 'Save', 'include-sermon-lang' );?>"></p></th>
+						<th><p class='submit'><input type='submit' class='button-primary' value="<?php _e( 'Save', 'include-sermon-lang' );?>"></p></th>
 						<td></td>
 					</tr>
 				</tbody>
