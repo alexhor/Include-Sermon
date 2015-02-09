@@ -1,5 +1,5 @@
 <?php
-class IncludeSermonOptions {
+class HS_IncludeSermonOptions {
 	/*adding all needed actions and filters*/
 	function __construct (){
 		//hook for admin menus for the plugin
@@ -25,6 +25,8 @@ class IncludeSermonOptions {
 		$button_color = get_option( 'include-sermon-button-color' );
 		$category = get_option( 'include-sermon-category' );
 		$color = get_option( 'include-sermon-color' );
+		$width = get_option( 'include-sermon-video-width' );
+		$height = get_option( 'include-sermon-video-height' );
 		
 		//checking if the user has really send the form
 		if( isset( $_POST['inc_serm_checkpost'] ) && $_POST['inc_serm_checkpost'] == 'rg' ) {
@@ -32,9 +34,13 @@ class IncludeSermonOptions {
 			$button_color = $_POST['inc_serm_button-color'];
 			$category = $_POST['inc_serm_category'];
 			$color = $_POST['inc_serm_color'];
+			$width = $_POST['inc_serm_width'];
+			$height = $_POST['inc_serm_height'];
 			update_option( 'include-sermon-button-color', $button_color );
 			update_option( 'include-sermon-category', $category);
 			update_option( 'include-sermon-color', $color);
+			update_option( 'include-sermon-video-width', $width);
+			update_option( 'include-sermon-video-height', $height);
 			update_option( 'include-sermon-options-set', 1);
 			
 			//telling the user that his setting were successfully stored
@@ -61,7 +67,7 @@ class IncludeSermonOptions {
 							<th><label for='inc_serm_button-color'><h4><?php _e( 'Choose a color for the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
 							<td>
 								<!--input field for setting the button-color-->
-								<input type='text' name='inc_serm_button-color' maxlength='7' placeholder="<?php _e( 'Button Color', 'include-sermon-lang' );?>" required='required' value="<?php echo $button_color;?>">
+								<input type='text' name='inc_serm_button-color' maxlength='7' placeholder="<?php _e( 'Button Color', 'include-sermon-lang' );?>" required='required' value="<?php echo esc_attr($button_color);?>">
 								<!--instructing the user which strings he is allowed to use-->
 								<p style='font-size:9px'><?php _e( 'You can use hexcode or words like "blue" or "red"', 'include-sermon-lang' );?></p>
 							</td>
@@ -79,7 +85,19 @@ class IncludeSermonOptions {
 							<th><label for='color'><h4><?php _e( 'Choose a color for the text of the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
 							<td>
 								<!--input field for setting the category the post is posted in-->
-								<input type='text' name='inc_serm_color' maxlength='7' placeholder="<?php _e( 'Color', 'include-sermon-lang' );?>" required='required' value="<?php echo $color;?>">
+								<input type='text' name='inc_serm_color' maxlength='7' placeholder="<?php _e( 'Color', 'include-sermon-lang' );?>" required='required' value="<?php echo esc_attr($color);?>">
+							</td>
+						</tr>
+						<tr>
+							<!--label for the color input field-->
+							<th><label for='width'><h4><?php _e( 'Which size should the video have?', 'include-sermon-lang' );?></h4></label></th>
+							<td>
+								<!--input field for setting the width of the video-->
+								<input type='text' name='inc_serm_width' maxlength='3' placeholder="<?php _e( 'width', 'include-sermon-lang' );?>" required='required' value="<?php echo esc_attr($width);?>">
+								x
+								<!--input field for setting the height of the video-->
+								<input type='text' name='inc_serm_height' maxlength='3' placeholder="<?php _e( 'height', 'include-sermon-lang' );?>" required='required' value="<?php echo esc_attr($height);?>">
+								<p style='font-size:12px; margin-left:5%'><?php _e( '(In pixel)', 'include-sermon-lang' );?></p>
 							</td>
 						</tr>
 						<tr>
@@ -96,4 +114,4 @@ class IncludeSermonOptions {
 	}
 }
 
-$IncludeSermonOptions = NEW IncludeSermonOptions;
+$HS_IncludeSermonOptions = NEW HS_IncludeSermonOptions;

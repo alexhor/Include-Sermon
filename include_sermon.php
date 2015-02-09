@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Include Sermon
  * Description: A Plugin to automatically include a video- and audiofile, the title of the sermon and the preachers name onti your Wordpress blog
- * Version: 1.0
- * Author: Alexander Hornig
+ * Version: 1.1
+ * Author: Hornig Software
  * License: GPL2
  */
  
- /*  Copyright 2014  Alexander Hornig  (email : alexanderhornig@hotmail.com)
+ /*  Copyright 2014  Hornig Software (email : alexander@hornig-software.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -22,7 +22,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-?><link rel='stylesheet' type='text/css' href='style.css'><?php
+__("<link rel='stylesheet' type='text/css' href='style.css'><?p");
 
 /*turning debugging on for testing*/
 define('WP_DEBUG', true);
@@ -40,4 +40,4 @@ require_once( 'include_sermon_form.php' );
 require_once( 'include_sermon_options.php' );
  
 /*file for general functions*/
-require_once( 'general.php' );
+require_once( 'include-sermon-general.php' );

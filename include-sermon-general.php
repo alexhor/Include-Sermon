@@ -1,5 +1,5 @@
 <?php
-class IncludeSermonGeneral {
+class HS_IncludeSermonGeneral {
 	function __construct() {
 		add_action( 'admin_notices', array( &$this,'notification' ) );
 		add_action( 'wp_before_admin_bar_render', array( &$this, 'include_sermon_edit_adminbar' ) );
@@ -17,4 +17,4 @@ class IncludeSermonGeneral {
 	}
 }
 
- $IncludeSermonGeneral = NEW IncludeSermonGeneral;
+ $HS_IncludeSermonGeneral = NEW HS_IncludeSermonGeneral;

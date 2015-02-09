@@ -1,5 +1,5 @@
 <?php
-class IncludeSermonPost {
+class HS_IncludeSermonPost {
 	/*adding all needed actions and filters*/
 	function __construct (){
 		//adding the function for creating the post
@@ -89,26 +89,11 @@ class IncludeSermonPost {
 				$height = get_option( 'include-sermon-video-height' );
 				
 				//putting the audio download link and the video into the content
-				$content = "<style type='text/css' media='screen'>
-								.clearfix:before,
-								.clearfix:after {
-								content: \" \";
-								display: table;
-								}
-								.clearfix:after {
-								clear: both;
-								}
-								.clearfix {
-								*zoom: 1;
-								}
-							</style>
-							<div class='clearfix'>
-								<div style=\"float:left; width:400px;\">
-									<iframe src='$videolink' width='$width' height='$height' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-								</div>
-								<div style=\"float:right; width:30%;\">
-									<a style=\"text-decoration:none; background-color:$button_color; border-radius:3px; padding:5px; color:$color; border-color:black; border:1px;\" href='$audiolink' title='Download als MP3' target='_blank'>Download als MP3</a>
-								</div>
+				$content = "<div>
+								<iframe src='$videolink' width='$width' height='$height' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+							<div>
+								<a style=\"text-decoration:none; background-color:$button_color; border-radius:3px; padding:5px; color:$color; border-color:black; border:1px;\" href='$audiolink' title='Download als MP3' target='_blank'>Download als MP3</a>
 							</div>";
 			}
 			
@@ -133,4 +118,4 @@ class IncludeSermonPost {
 	}
 }
 
-$IncludeSermonPost = NEW IncludeSermonPost;
+$HS_IncludeSermonPost = NEW HS_IncludeSermonPost;

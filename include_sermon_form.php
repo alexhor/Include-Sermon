@@ -1,5 +1,5 @@
 <?php
-class IncludeSermonForm {
+class HS_IncludeSermonForm {
 	/*adding all needed actions and filters*/
 	function __construct () {
 		//hook for admin menus for the plugin
@@ -39,4 +39,4 @@ class IncludeSermonForm {
 	}
 }
 
-$IncludeSermonForm = NEW IncludeSermonForm;
+$HS_IncludeSermonForm = NEW HS_IncludeSermonForm;
