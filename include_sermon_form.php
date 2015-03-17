@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) or die( "Please don't do that!" );
+
 class HS_IncludeSermonForm {
 	/*adding all needed actions and filters*/
 	function __construct () {
@@ -29,7 +31,7 @@ class HS_IncludeSermonForm {
 			
 			<!--instruction for what to do if there is no audio- or videofile available-->
 			<p><?php _e( '(Wenn es aus irgendwelchen Gründen keine Video-und/oder Audiopredigt gibt, dann einfach "no" in die Felder eintragen)', 'include_sermon' );?></p>
-			<input type='hidden' name='inc_serm_gansgeheime' value="ADpuer0z wf4rwedf"/>
+			<input type='hidden' name='inc_serm_gansgeheime' value="ADpuer"/>
 			
 			<!--button to send the form-->
 			<p class='submit'><input type="submit" class='button-primary' value="<?php _e( 'Post erstellen', 'include_sermon' );?>"/></p>

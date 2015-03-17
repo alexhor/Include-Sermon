@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) or die( "Please don't do that!" );
+
 class HS_IncludeSermonPost {
 	/*adding all needed actions and filters*/
 	function __construct (){
@@ -10,10 +12,10 @@ class HS_IncludeSermonPost {
 	function include_sermon_post (){
 		
 		/*checking if the user send the form*/
-		if( isset( $_POST['inc_serm_gansgeheime'] ) && $_POST['inc_serm_gansgeheime'] != "ADp" ){
+		if( isset( $_POST['inc_serm_gansgeheime'] ) && esc_attr( $_POST['inc_serm_gansgeheime'] ) == "ADpuer" ){
 		
 			//decoding the given download link
-			$audiolink = urldecode( $_POST['inc_serm_audio'] );
+			$audiolink = esc_attr( urldecode( $_POST['inc_serm_audio'] ) );
 			
 			//checking if an audiolink is given
 			if( $audiolink != 'no' ){
@@ -54,13 +56,13 @@ class HS_IncludeSermonPost {
 			
 			
 			//splitting the video link into pieces
-			$array = explode( '/', $_POST['inc_serm_video'] );
+			$array = explode( '/', esc_attr( $_POST['inc_serm_video'] ) );
 			//... and including it into the right URL
 			$videolink = "//player.vimeo.com/video/".$array[3];
 			
 			//getting some required data from the database
-			$button_color = get_option( 'include-sermon-button-color' );
-			$color = get_option( 'include-sermon-color' );
+			$button_color = '#'.get_option( 'include-sermon-button-color' );
+			$color = '#'.get_option( 'include-sermon-color' );
 			
 			//checking if there is no video file given
 			if( $_POST['inc_serm_video'] == 'no' ){
@@ -99,14 +101,15 @@ class HS_IncludeSermonPost {
 			
 			//setting the post title
 			$title = $subject.' // '.$prediger;
-			//getting the stored category for the post
+			//getting the stored category and post status for the post
 			$category_id = get_option( 'include-sermon-category' );
+			$post_status = get_option( 'include-sermon-post-status' );
 			
 			//putting all collected data into an array for posting it
 			$post = array(
 							'post_content'   => $content,// The full text of the post.
 							'post_title'     => $title, // The title of your post.
-							'post_status'    => 'publish', // Default 'draft'.
+							'post_status'    => $post_status, // Default 'draft'.
 							'post_type'      => 'post', // Default 'post'.
 							'post_category'  => array($category_id), // Default empty.
 							'tags_input'     => array( $prediger, $subject ) // Default empty.
