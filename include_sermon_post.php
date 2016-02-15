@@ -18,47 +18,28 @@ class HS_IncludeSermonPost {
 			$audiolink = esc_attr( urldecode( $_POST['inc_serm_audio'] ) );
 			
 			//checking if an audiolink is given
-			if( $audiolink != 'no' ){
-				//splitting the audio link into pieces
-				$explode = explode( ' ', $audiolink );
-				//setting reference var
-				$i = 0;
-				
-				//going through the splitted audio link
-				while( isset($explode[$i] ) ){
-					//the '-' is a marking point who marks the ending of the subject and beginning of the ...s name and we want to have the last of these '-'
-					if( $explode[$i] == '-' ){ $a = $i; }
-					$i++;
-				}
-				
-				//starting to turn the splitted audio link into the subjects name
-				$subject = $explode[1];
-				
-				//going through the splitted audio link to build the subjects name
-				for( $i=2; $i != $a; $i++ ){
-					$subject .= ' '.$explode[$i];
-					if( $i > 20 ){ break; }
-				}
-
-				$a++;
-				//starting to turn the splitted audio link into the ...s name
-				$prediger = $explode[$a];
-				$a++;
-				
-				//going through the splitted audio link to build the subjects name
-				while( isset( $explode[$a] ) ){
-					$prediger .= ' '.$explode[$a];
-					$a++;
-				}
-				//cutting off the last few signs, not belonging to the ...s name
-				$prediger = substr( $prediger, 0, -9);
+			if( $audiolink != 'no' ){                
+                //the '-' is a marking point marking the ending of the subject and beginning of the preachers name and we want to have the last of these '-'
+                preg_match_all( '/(.*)-(.*)/', $audiolink , $matches );
+				$preacher = trim( preg_replace( '/.mp3\?dl=[0,1]/', '', end( $matches )[0] ) );
+                
+                //finding dates in the url
+                preg_match_all( '/[0-9]{4}-[0,1][0-9]-[0-3][0-9](.*)/', $audiolink, $matches );
+                //the last date should be the one in the filename (there could be dates in the url as well)
+                $subject = end( $matches )[0];
+                //getting everything after the subject
+                preg_match_all( '/-(.*)/', $subject, $matches );
+                //... and deleting it from the subject string
+                $subject = trim( substr( $subject, 0, strlen( $subject ) - strlen( end( $matches[0] ) ) ) );
 			}
 			
 			
-			//splitting the video link into pieces
-			$array = explode( '/', esc_attr( $_POST['inc_serm_video'] ) );
-			//... and including it into the right URL
-			$videolink = "//player.vimeo.com/video/".$array[3];
+            if( $_POST['inc_serm_video'] != 'no' ){
+                //splitting the video link into pieces
+                $array = explode( '/', esc_attr( $_POST['inc_serm_video'] ) );
+                //... and including it into the right URL
+                $videolink = "//player.vimeo.com/video/".$array[3];
+            }
 			
 			//getting some required data from the database
 			$button_color = '#'.get_option( 'include-sermon-button-color' );
@@ -74,7 +55,7 @@ class HS_IncludeSermonPost {
 				else{
 					//and activating the direct download from Dropbox, when clicking on the link
 					$audiolink = str_replace( 'dl=0', 'dl=1', $audiolink );
-					$content = "Wegen technischer Probleme gibt es keine Videoaufzeichnung von diesem Gottesdienst. <a style=\"text-decoration:none; background-color:$button_color; border-radius:3px; padding:5px; color:$color; border-color:black; border:1px;\" href='$audiolink' title='Download als MP3' target='_blank'>Download als MP3</a>";
+					$content = "Wegen technischer Probleme gibt es keine Videoaufzeichnung von diesem Gottesdienst.<br><a style=\"text-decoration:none; background-color:$button_color; border-radius:3px; padding:5px; color:$color; border-color:black; border:1px;\" href='$audiolink' title='Download als MP3' target='_blank'>Download als MP3</a>";
 				}
 			}
 			//checking if there is no audio file given
@@ -100,7 +81,7 @@ class HS_IncludeSermonPost {
 			}
 			
 			//setting the post title
-			$title = $subject.' // '.$prediger;
+			$title = $subject.' // '.$preacher;
 			//getting the stored category and post status for the post
 			$category_id = get_option( 'include-sermon-category' );
 			$post_status = get_option( 'include-sermon-post-status' );
@@ -112,7 +93,7 @@ class HS_IncludeSermonPost {
 							'post_status'    => $post_status, // Default 'draft'.
 							'post_type'      => 'post', // Default 'post'.
 							'post_category'  => array($category_id), // Default empty.
-							'tags_input'     => array( $prediger, $subject ) // Default empty.
+							'tags_input'     => array( $preacher, $subject ) // Default empty.
 						); 
 			
 			//creating the post

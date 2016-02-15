@@ -5,30 +5,32 @@
  * Version: 1.3
  * Author: Hornig Software
  * Author URI: http://hornig-software.com
- * License: GPL2
+ * License: MIT
  */
  
- /*  Copyright 2014  Hornig Software (email : alexander@hornig-software.com)
+/*  Copyright(c) 2014  Hornig Software (email : alexander@hornig-software.com)
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
 */
 defined( 'ABSPATH' ) or die( "Please don't do that!" );
-
-__("<link rel='stylesheet' type='text/css' href='style.css'>");
-
-/*turning debugging on for testing*/
-define('WP_DEBUG', true);
 
 /*Setting standard settings when plugin is beeing installed*/
 function HS_IncludeSermonInstall() {
@@ -48,7 +50,7 @@ function HS_IncludeSermonInstall() {
 register_activation_hook( __FILE__, 'HS_IncludeSermonInstall' );
 
 /*textfiles to internationalize the plugin*/
-load_plugin_textdomain( 'include-sermon-lang', false, basename( dirname( __FILE__ ) ) . '/lang' );
+#load_plugin_textdomain( 'include-sermon-lang', false, basename( dirname( __FILE__ ) ) . '/lang' );
  
 /*file for creating the post*/
 require_once( 'include_sermon_post.php' );
@@ -62,6 +64,6 @@ require_once( 'include_sermon_options.php' );
 /*adding the admin bar entry for adding new sermon posts*/
 function include_sermon_edit_adminbar (){
 	global $wp_admin_bar;
-	$wp_admin_bar->add_menu( array( parent => 'new-content', title => __( 'Sermon', 'include_sermon' ), href => admin_url( 'edit.php?page=include_sermon' ) ) );
+	$wp_admin_bar->add_menu( array( 'id' => 'new-sermon', 'parent' => 'new-content', 'title' => __( 'Sermon', 'include_sermon' ), 'href' => admin_url( 'edit.php?page=include_sermon' ) ) );
 }
 add_action( 'wp_before_admin_bar_render', 'include_sermon_edit_adminbar' );
