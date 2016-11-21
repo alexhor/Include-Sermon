@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Include Sermon
- * Description: A Plugin to automatically include a video- and audiofile, the title of the sermon and the preachers name onti your Wordpress blog
+ * Description: A Plugin to automatically include a video- and audiofile, the title of the sermon and the preachers name onto your Wordpress blog
  * Version: 1.3
  * Author: Hornig Software
  * Author URI: http://hornig-software.com
@@ -50,7 +50,7 @@ function HS_IncludeSermonInstall() {
 register_activation_hook( __FILE__, 'HS_IncludeSermonInstall' );
 
 /*textfiles to internationalize the plugin*/
-#load_plugin_textdomain( 'include-sermon-lang', false, basename( dirname( __FILE__ ) ) . '/lang' );
+load_plugin_textdomain( 'include_sermon', false, basename( dirname( __FILE__ ) ) . '/lang' );
  
 /*file for creating the post*/
 require_once( 'include_sermon_post.php' );
@@ -67,3 +67,10 @@ function include_sermon_edit_adminbar (){
 	$wp_admin_bar->add_menu( array( 'id' => 'new-sermon', 'parent' => 'new-content', 'title' => __( 'Sermon', 'include_sermon' ), 'href' => admin_url( 'edit.php?page=include_sermon' ) ) );
 }
 add_action( 'wp_before_admin_bar_render', 'include_sermon_edit_adminbar' );
+
+/*addin settings option on plugin activation page*/
+function include_sermon_plugin_settings_link( $actions, $user_object ) {
+    $new['settings'] = '<a href="' . admin_url( 'options-general.php?page=include_sermon' ) . '">' . __( 'Settings', 'include_sermon' )  . '</a>';
+    return array_merge( $new, $actions );
+}
+add_filter( "plugin_action_links_" . plugin_basename( __FILE__ ), 'include_sermon_plugin_settings_link', 10, 2 );
