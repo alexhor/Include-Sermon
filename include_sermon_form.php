@@ -41,7 +41,7 @@ class HS_IncludeSermonForm {
 					
 					<!--input for the videolink from Vimeo (at the moment only videos from Vimeo can be used for this-->
 					<label for='inc_serm_video'><?php _e( 'The Videolink from Vimeo (e.g.: http://vimeo.com/89224153)', 'include_sermon' );?></label><br>
-					<input type='text' name='inc_serm_video' id='inc_serm_video' placeholder="<?php _e( 'Videolink', 'include_sermon' );?>" value="<?php echo esc_attr( $this->given_data['video'] ); ?>">
+					<input type='text' name='inc_serm_video' id='inc_serm_video' placeholder="<?php _e( 'Videolink', 'include_sermon' );?>" value="<?php echo esc_attr( @$this->given_data['video'] ); ?>">
 					<input type='checkbox' name='inc_serm_no_video' id='inc_serm_no_video' <?php if( isset( $this->given_data['no_video'] ) ) echo 'checked'; ?>><label for='inc_serm_no_video'><?php _e( 'No Videolink available', 'include_sermon' ); ?></label><br>
 					<?php if( isset( $this->false_data['video'] ) ) { echo '<div class="notice notice-error">' . __( 'This is not a valid videolink. Please correct this or check "No Videolink available"', 'include_sermon' ) . '</div>'; } ?>
 					
@@ -49,7 +49,7 @@ class HS_IncludeSermonForm {
 					
 					<!--input for the link to your sermon audiofile-->
 					<label for='inc_serm_audio'><?php _e( 'The shared link from Dropbox for the Audio file', 'include_sermon' );?></label><br>
-					<input type='text' name='inc_serm_audio' id='inc_serm_audio' placeholder="<?php _e( 'Audiolink', 'include_sermon' );?>" value="<?php echo esc_attr( $this->given_data['audio'] ); ?>">
+					<input type='text' name='inc_serm_audio' id='inc_serm_audio' placeholder="<?php _e( 'Audiolink', 'include_sermon' );?>" value="<?php echo esc_attr( @$this->given_data['audio'] ); ?>">
 					<input type='checkbox' name='inc_serm_no_audio' id='inc_serm_no_audio' <?php if( isset( $this->given_data['no_audio'] ) ) echo 'checked'; ?>><label for='inc_serm_no_audio'><?php _e( 'No Audiolink available', 'include_sermon' ); ?></label><br>
 					<?php if( isset( $this->false_data['audio'] ) ) { echo '<div class="notice notice-error">' . __( 'This is not a valid audiolink. Please correct this or check "No Audiolink available"', 'include_sermon' ) . '</div>'; } ?>
 					
@@ -79,7 +79,7 @@ class HS_IncludeSermonForm {
 						
 						<!-- edit the preachers name -->
 						<label for='inc_serm_preacher'><?php _e( 'Preacher', 'include_sermon' ); ?></label>
-						<input type='text' name='inc_serm_preacher' id='inc_serm_preacher' placeholder="<?php _e( 'Preacher', 'include_sermon' ); ?>" value="<?php echo esc_attr( $this->given_data['preacher'] ); ?>"><br>
+						<input type='text' name='inc_serm_preacher' id='inc_serm_preacher' placeholder="<?php _e( 'Preacher', 'include_sermon' ); ?>" value="<?php echo esc_attr( @$this->given_data['preacher'] ); ?>"><br>
 						
 						<?php
 						// create nonce
