@@ -1,0 +1,194 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-12-01 16:03+0100\n"
+"PO-Revision-Date: 2016-12-01 16:05+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include_sermon.php:64
+msgid "Sermon"
+msgstr "Predigt"
+
+#: include_sermon.php:70
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: include_sermon_form.php:27
+msgid "New Sermon"
+msgstr "Neue Predigt"
+
+#: include_sermon_form.php:40
+msgid "Create Sermon Post"
+msgstr "Predigt Post erstellen"
+
+#: include_sermon_form.php:43
+msgid "The Videolink from Vimeo (e.g.: http://vimeo.com/89224153)"
+msgstr "Der Videolink von Vimeo (z.B.: http://vimeo.com/89224153)"
+
+#: include_sermon_form.php:44
+msgid "Videolink"
+msgstr "Videolink"
+
+#: include_sermon_form.php:45
+msgid "No Videolink available"
+msgstr "Kein Videolink verfügbar"
+
+#: include_sermon_form.php:46
+msgid ""
+"This is not a valid videolink. Please correct this or check \"No Videolink "
+"available\""
+msgstr ""
+"Dies ist kein gültiger Videolink. Bitte korrigieren Sie dies oder wählen Sie "
+"\"Kein Videolink verfügbar\""
+
+#: include_sermon_form.php:51
+msgid "The shared link from Dropbox for the Audio file"
+msgstr "Der freigegeben Link von Dropbox für die Audio Datei"
+
+#: include_sermon_form.php:52
+msgid "Audiolink"
+msgstr "Audiolink"
+
+#: include_sermon_form.php:53
+msgid "No Audiolink available"
+msgstr "Kein Audiolink verfügbar"
+
+#: include_sermon_form.php:54
+msgid ""
+"This is not a valid audiolink. Please correct this or check \"No Audiolink "
+"available\""
+msgstr ""
+"Dies ist kein gültiger Audiolink. Bitte korrigieren Sie dies oder wählen Sie "
+"\"Kein Audiolink verfügbar\""
+
+#: include_sermon_form.php:59
+msgid "Post Sermon"
+msgstr "Predigt posten"
+
+#: include_sermon_form.php:69
+msgid "Please check the generated info for mistakes"
+msgstr "Bitte überprüfen Sie die generierten Informationen auf Fehler"
+
+#: include_sermon_form.php:72 include_sermon_form.php:73
+msgid "Date"
+msgstr "Datum"
+
+#: include_sermon_form.php:74
+msgid "No date was found (is required)"
+msgstr "Es konnte kein Datum gefunden werden (ist Pflicht)"
+
+#: include_sermon_form.php:77 include_sermon_form.php:78
+msgid "Subject"
+msgstr "Thema"
+
+#: include_sermon_form.php:81 include_sermon_form.php:82
+msgid "Preacher"
+msgstr "Prediger"
+
+#: include_sermon_form.php:93
+msgid "Confirm Info"
+msgstr "Informationen bestätigen"
+
+#: include_sermon_form.php:234 include_sermon_form.php:235
+#, php-format
+msgid "Service on the %s"
+msgstr "Gottesdienst am %s"
+
+#: include_sermon_form.php:251
+msgid ""
+"We are sorry, but for technical reasons there is no video file from this "
+"service"
+msgstr ""
+"Wegen technischer Probleme gibt es leider keine Video Datei von diesem "
+"Gottesdienst, wir bitten dies zu entschuldigen"
+
+#: include_sermon_form.php:255
+msgid ""
+"We are sorry, but for technical reasons there is no audio or video file from "
+"this service"
+msgstr ""
+"Wegen technischer Probleme gibt es leider keine Audio oder Video Datei von "
+"diesem Gottesdienst, wir bitten dies zu entschuldigen"
+
+#: include_sermon_form.php:282
+msgid "Download as MP3"
+msgstr "Download als MP3"
+
+#: include_sermon_options.php:14
+msgid "Include Sermon Options"
+msgstr "Predigt Teilen Einstellungen"
+
+#: include_sermon_options.php:14
+msgid "Include Sermon"
+msgstr "Predigt Teilen"
+
+#: include_sermon_options.php:22
+msgid ""
+"You are not allowed to edit these options! <br/> Please contact the "
+"Administrator."
+msgstr ""
+"Du darfst diese Einstellungen nicht bearbeiten! <br/> Bitte kontaktiere "
+"einen Administrator."
+
+#: include_sermon_options.php:52
+msgid "Settings Saved"
+msgstr "Einstellungen Gespeichert"
+
+#: include_sermon_options.php:65
+msgid "Settings › Include Sermon"
+msgstr "Einstellungen › Predigt Teilen"
+
+#: include_sermon_options.php:72
+msgid "Choose the category the sermon should be posted in"
+msgstr "Wähle die Kategorie, in welche die Predigten gepostet werden sollen"
+
+#: include_sermon_options.php:80
+msgid "Select the status a posted sermon should have by default"
+msgstr "Wähle den Status eine gepostete Predigt standardmäßig haben sollte"
+
+#: include_sermon_options.php:96
+msgid "Choose a color for the button which starts the MP3 Download"
+msgstr "Wähle eine Farbe für den Button, der den MP3 Download startet"
+
+#: include_sermon_options.php:99
+msgid "Button Color"
+msgstr "Button Farbe"
+
+#: include_sermon_options.php:104
+msgid "Choose a text-color for the button which starts the MP3 Download"
+msgstr "Wähle eine Textfarbe für den Button, der den MP3 Download startet"
+
+#: include_sermon_options.php:107
+msgid "Color"
+msgstr "Farbe"
+
+#: include_sermon_options.php:112
+msgid "Which size should the video be?"
+msgstr "Wie groß soll das Video sein?"
+
+#: include_sermon_options.php:115
+msgid "width"
+msgstr "Breite"
+
+#: include_sermon_options.php:118
+msgid "height"
+msgstr "Höhe"
+
+#: include_sermon_options.php:119
+msgid "(In pixels)"
+msgstr "(In Pixeln)"
+
+#: include_sermon_options.php:123
+msgid "Save"
+msgstr "Speichern"

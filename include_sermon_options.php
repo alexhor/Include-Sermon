@@ -11,7 +11,7 @@ class HS_IncludeSermonOptions {
 	/*function with the menu-building code to setup the menu for the plugin*/
 	function include_sermon_menu() {
 		//Add new sub-menus under Settings and Posts
-		add_options_page( 'Include Sermon Options', 'Include Sermon', 'manage_options', 'include_sermon', array( &$this, 'include_sermon_options' ) );
+		add_options_page( __( 'Include Sermon Options', 'include_sermon' ), __( 'Include Sermon', 'include_sermon' ), 'manage_options', 'include_sermon', array( &$this, 'include_sermon_options' ) );
 	}
 	 
 	/*function to setup the page for editing the plugin options*/
@@ -19,7 +19,7 @@ class HS_IncludeSermonOptions {
 		//checking if the user is not allowed to change this options
 		if(!current_user_can( 'manage_options' )){
 			//if he is not allowed to change these options he will get this following message:
-			wp_die( __( 'You are not allowed to edit these options! <br/> Please contact the Administrator.', 'include-sermon-lang' ) );
+			wp_die( __( 'You are not allowed to edit these options! <br/> Please contact the Administrator.', 'include_sermon' ) );
 		}
 		//now the page with the options is beeing created
 		
@@ -49,7 +49,7 @@ class HS_IncludeSermonOptions {
 			update_option( 'include-sermon-video-height', $height);
 			update_option( 'include-sermon-post-status', $post_status);
 			//telling the user that his setting were successfully stored
-			echo "<div class='updated'><p><strong>".__( 'settings saved', 'include-sermon-lang' )."</strong></p></div>";
+			echo "<div class='updated'><p><strong>".__( 'Settings Saved', 'include_sermon' )."</strong></p></div>";
 		}
 		?>
 		<!--now the options start-->
@@ -62,30 +62,22 @@ class HS_IncludeSermonOptions {
 					<!--table header starts-->
 					<thead>
 						<!--title-->
-						<tr><th colspan='2'><h2><?php _e( 'Here you can change the options', 'include-sermon-lang' );?></h2><hr></th></tr>
+						<tr><th colspan='2'><h2><?php _e( 'Settings › Include Sermon', 'include_sermon' );?></h2><hr></th></tr>
 					</thead>
 					<!--table header ends-->
 					<!--table body starts-->
 					<tbody>
 						<tr>
-							<!--label for the button-color input field-->
-							<th><label for='inc_serm_button-color'><h4><?php _e( 'Choose a color for the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
-							<td>
-								<!--input field for setting the button-color-->
-								<input type='color' name='inc_serm_button-color' maxlength='7' placeholder="<?php _e( 'Button Color', 'include-sermon-lang' );?>" required='required' value="<?php echo '#'.$button_color;?>">
-							</td>
-						</tr>
-						<tr>
-							<!--label for the button-color input field-->
-							<th><label for='Category'><h4><?php _e( 'Give the ID of the category the post should be posted in', 'include-sermon-lang' );?></h4></label></th>
+							<!--label for the category input field-->
+							<th><label for='Category'><h4><?php _e( 'Choose the category the sermon should be posted in', 'include_sermon' );?></h4></label></th>
 							<td>
 								<!--input field for setting the category the post is posted in-->
-								<?php wp_dropdown_categories( array( hide_empty => '0', name => 'inc_serm_category', selected => $category ) ); ?>
+								<?php wp_dropdown_categories( array( 'hide_empty' => '0', 'name' => 'inc_serm_category', 'selected' => $category ) ); ?>
 							</td>
 						</tr>
 						<tr>
-							<!--label for the button-color input field-->
-							<th><label for='post_status'><h4><?php _e( 'Give the ID of the category the post should be posted in', 'include-sermon-lang' );?></h4></label></th>
+							<!--label for the post-status input field-->
+							<th><label for='post_status'><h4><?php _e( 'Select the status a posted sermon should have by default', 'include_sermon' );?></h4></label></th>
 							<td>
 								<!--input field for setting the status new post should have (if you first want to test)-->
 								<select name='inc_serm_post_status'>
@@ -100,27 +92,35 @@ class HS_IncludeSermonOptions {
 							</td>
 						</tr>
 						<tr>
+							<!--label for the button-color input field-->
+							<th><label for='inc_serm_button-color'><h4><?php _e( 'Choose a color for the button which starts the MP3 Download', 'include_sermon' );?></h4></label></th>
+							<td>
+								<!--input field for setting the button-color-->
+								<input type='color' name='inc_serm_button-color' maxlength='7' placeholder="<?php _e( 'Button Color', 'include_sermon' );?>" required='required' value="<?php echo '#'.$button_color;?>">
+							</td>
+						</tr>
+						<tr>
 							<!--label for the color input field-->
-							<th><label for='color'><h4><?php _e( 'Choose a color for the text of the button who starts the MP3 Download', 'include-sermon-lang' );?></h4></label></th>
+							<th><label for='color'><h4><?php _e( 'Choose a text-color for the button which starts the MP3 Download', 'include_sermon' );?></h4></label></th>
 							<td>
 								<!--input field for setting the category the post is posted in-->
-								<input type='color' name='inc_serm_color' maxlength='7' placeholder="<?php _e( 'Color', 'include-sermon-lang' );?>" required='required' value="<?php echo '#'.$color;?>">
+								<input type='color' name='inc_serm_color' maxlength='7' placeholder="<?php _e( 'Color', 'include_sermon' );?>" required='required' value="<?php echo '#'.$color;?>">
 							</td>
 						</tr>
 						<tr>
 							<!--label for the color input field-->
-							<th><label for='width'><h4><?php _e( 'Which size should the video have?', 'include-sermon-lang' );?></h4></label></th>
+							<th><label for='width'><h4><?php _e( 'Which size should the video be?', 'include_sermon' );?></h4></label></th>
 							<td>
 								<!--input field for setting the width of the video-->
-								<input type='text' name='inc_serm_width' maxlength='3' placeholder="<?php _e( 'width', 'include-sermon-lang' );?>" required='required' value="<?php echo $width;?>">
+								<input type='text' name='inc_serm_width' maxlength='3' placeholder="<?php _e( 'width', 'include_sermon' );?>" required='required' value="<?php echo $width;?>">
 								x
 								<!--input field for setting the height of the video-->
-								<input type='text' name='inc_serm_height' maxlength='3' placeholder="<?php _e( 'height', 'include-sermon-lang' );?>" required='required' value="<?php echo $height;?>">
-								<p style='font-size:12px; margin-left:5%'><?php _e( '(In pixel)', 'include-sermon-lang' );?></p>
+								<input type='text' name='inc_serm_height' maxlength='3' placeholder="<?php _e( 'height', 'include_sermon' );?>" required='required' value="<?php echo $height;?>">
+								<p style='font-size:12px; margin-left:5%'><?php _e( '(In pixels)', 'include_sermon' );?></p>
 							</td>
 						</tr>
 						<tr>
-							<td class='submit'><input type='submit' class='button-primary' name='inc_serm_save' value="<?php _e( 'Save', 'include-sermon-lang' );?>"></td>
+							<td class='submit'><input type='submit' class='button-primary' name='inc_serm_save' value="<?php _e( 'Save', 'include_sermon' );?>"></td>
 							<td></td>
 					</tbody>
 					<!--tabe body ends-->
