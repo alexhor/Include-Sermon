@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Include Sermon
  * Description: A Plugin to automatically include a video- and audiofile, the title of the sermon and the preachers name onto your Wordpress blog
- * Version: 1.3
+ * Version: 1.4
  * Author: Hornig Software
  * Author URI: http://hornig-software.com
  * License: MIT
@@ -51,9 +51,6 @@ register_activation_hook( __FILE__, 'HS_IncludeSermonInstall' );
 
 /*textfiles to internationalize the plugin*/
 load_plugin_textdomain( 'include_sermon', false, basename( dirname( __FILE__ ) ) . '/lang' );
- 
-/*file for creating the post*/
-require_once( 'include_sermon_post.php' );
  
 /*file for adding the from to create a post*/
 require_once( 'include_sermon_form.php' );
